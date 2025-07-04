@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://cklcgbb1lkgau"]
+
+[ext_resource type="FontFile" uid="uid://l3ypj80s7w7i" path="res://fonts/Lucida_Grande_Bold.ttf" id="1_saict"]
+[ext_resource type="Script" uid="uid://cygto5lnstxq3" path="res://screens/mima3D/buttons.gd" id="1_w5ggl"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchor_right = 1.28
+anchor_bottom = 1.28
+offset_right = -0.000244141
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -449.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.25098, 0.270588, 1)
+script = ExtResource("1_w5ggl")
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = 52.0
+offset_right = 127.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_saict")
+theme_override_font_sizes/font_size = 45
+text = "mima3D"
+horizontal_alignment = 1
+
+[node name="btnBack" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -105.0
+offset_right = 185.0
+offset_bottom = -38.9999
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_saict")
+theme_override_font_sizes/font_size = 22
+text = "back"
+
+[connection signal="button_down" from="ColorRect/btnBack" to="ColorRect" method="_on_btn_back_button_down"]

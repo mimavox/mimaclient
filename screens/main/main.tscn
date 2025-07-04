@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccluxkagjailo"]
+
+[ext_resource type="FontFile" uid="uid://l3ypj80s7w7i" path="res://fonts/Lucida_Grande_Bold.ttf" id="1_h47hb"]
+[ext_resource type="Script" uid="uid://ci3gr35urgtyf" path="res://screens/main/buttons.gd" id="2_h47hb"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchor_right = 1.28
+anchor_bottom = 1.28
+offset_right = -0.000244141
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -449.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.380392, 0.380392, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = 52.0
+offset_right = 127.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_h47hb")
+theme_override_font_sizes/font_size = 45
+text = "mimaverse"
+horizontal_alignment = 1
+
+[node name="btnContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -80.0
+offset_right = 95.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("2_h47hb")
+
+[node name="btn2D" type="Button" parent="ColorRect/btnContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_h47hb")
+text = "mima2D"
+
+[node name="btn3D" type="Button" parent="ColorRect/btnContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_h47hb")
+text = "mima3D"
+
+[node name="btnTest" type="Button" parent="ColorRect/btnContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_h47hb")
+text = "testdev"
+
+[connection signal="button_down" from="ColorRect/btnContainer/btn2D" to="ColorRect/btnContainer" method="_on_btn_2d_button_down"]
+[connection signal="button_down" from="ColorRect/btnContainer/btn3D" to="ColorRect/btnContainer" method="_on_btn_3d_button_down"]
+[connection signal="button_down" from="ColorRect/btnContainer/btnTest" to="ColorRect/btnContainer" method="_on_btn_test_button_down"]
