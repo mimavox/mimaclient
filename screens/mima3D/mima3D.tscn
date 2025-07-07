@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cklcgbb1lkgau"]
+[gd_scene load_steps=6 format=3 uid="uid://cklcgbb1lkgau"]
 
-[ext_resource type="FontFile" uid="uid://l3ypj80s7w7i" path="res://fonts/Lucida_Grande_Bold.ttf" id="1_saict"]
 [ext_resource type="Script" uid="uid://cygto5lnstxq3" path="res://screens/mima3D/buttons.gd" id="1_w5ggl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w5ggl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4ucj"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_evg8b"]
+sky_material = SubResource("ProceduralSkyMaterial_c4ucj")
+
+[sub_resource type="Environment" id="Environment_dxm56"]
+background_mode = 2
+sky = SubResource("Sky_evg8b")
+tonemap_mode = 2
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -12,7 +25,7 @@ offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +38,7 @@ grow_vertical = 2
 color = Color(0.180392, 0.25098, 0.270588, 1)
 script = ExtResource("1_w5ggl")
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="background"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,12 +48,11 @@ offset_top = 52.0
 offset_right = 127.0
 offset_bottom = 94.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_saict")
 theme_override_font_sizes/font_size = 45
 text = "mima3D"
 horizontal_alignment = 1
 
-[node name="btnBack" type="Button" parent="ColorRect"]
+[node name="btnBack" type="Button" parent="background"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -50,8 +62,66 @@ offset_top = -105.0
 offset_right = 185.0
 offset_bottom = -38.9999
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_saict")
 theme_override_font_sizes/font_size = 22
 text = "back"
 
-[connection signal="button_down" from="ColorRect/btnBack" to="ColorRect" method="_on_btn_back_button_down"]
+[node name="agent" type="ColorRect" parent="background"]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 182.0
+offset_right = 1563.0
+offset_bottom = 862.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="background/agent"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.5
+offset_top = 20.0
+offset_right = 88.5
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Agent internals"
+
+[node name="simulation" type="SubViewportContainer" parent="background"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 179.0
+offset_right = 614.0
+offset_bottom = 691.0
+
+[node name="SubViewport" type="SubViewport" parent="background/simulation"]
+handle_input_locally = false
+snap_2d_vertices_to_pixel = true
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="background/simulation/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="background/simulation/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.962168, -0.061348, 3.27932)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/simulation/SubViewport/Node3D"]
+mesh = SubResource("BoxMesh_w5ggl")
+skeleton = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="background/simulation/SubViewport/Node3D"]
+environment = SubResource("Environment_dxm56")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="background/simulation/SubViewport/Node3D"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="btnSnapshot" type="Button" parent="background"]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 183.0
+offset_right = 807.0
+offset_bottom = 264.0
+text = "observation
+snapshot"
+
+[connection signal="button_down" from="background/btnBack" to="background" method="_on_btn_back_button_down"]
+[connection signal="button_down" from="background/btnSnapshot" to="background" method="_on_btn_snapshot_button_down"]

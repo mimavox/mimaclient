@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgbnb3d1banw6"]
+[gd_scene load_steps=2 format=3 uid="uid://dgbnb3d1banw6"]
 
-[ext_resource type="FontFile" uid="uid://l3ypj80s7w7i" path="res://fonts/Lucida_Grande_Bold.ttf" id="1_af217"]
 [ext_resource type="Script" uid="uid://bdes4r7aec7uv" path="res://screens/mima2D/buttons.gd" id="1_q0vuc"]
 
 [node name="Main" type="Control"]
@@ -35,7 +34,6 @@ offset_top = 52.0
 offset_right = 127.0
 offset_bottom = 94.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_af217")
 theme_override_font_sizes/font_size = 45
 text = "mima2D"
 horizontal_alignment = 1
@@ -50,7 +48,6 @@ offset_top = -105.0
 offset_right = 185.0
 offset_bottom = -38.9999
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_af217")
 theme_override_font_sizes/font_size = 22
 text = "back"
 

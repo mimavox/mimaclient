@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccluxkagjailo"]
+[gd_scene load_steps=2 format=3 uid="uid://ccluxkagjailo"]
 
-[ext_resource type="FontFile" uid="uid://l3ypj80s7w7i" path="res://fonts/Lucida_Grande_Bold.ttf" id="1_h47hb"]
 [ext_resource type="Script" uid="uid://ci3gr35urgtyf" path="res://screens/main/buttons.gd" id="2_h47hb"]
 
 [node name="Main" type="Control"]
@@ -34,7 +33,6 @@ offset_top = 52.0
 offset_right = 127.0
 offset_bottom = 94.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_h47hb")
 theme_override_font_sizes/font_size = 45
 text = "mimaverse"
 horizontal_alignment = 1
@@ -58,19 +56,16 @@ script = ExtResource("2_h47hb")
 [node name="btn2D" type="Button" parent="ColorRect/btnContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_h47hb")
 text = "mima2D"
 
 [node name="btn3D" type="Button" parent="ColorRect/btnContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_h47hb")
 text = "mima3D"
 
 [node name="btnTest" type="Button" parent="ColorRect/btnContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_h47hb")
 text = "testdev"
 
 [connection signal="button_down" from="ColorRect/btnContainer/btn2D" to="ColorRect/btnContainer" method="_on_btn_2d_button_down"]

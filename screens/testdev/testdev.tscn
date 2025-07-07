@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbibfwywwktc6"]
+[gd_scene load_steps=6 format=3 uid="uid://dbibfwywwktc6"]
 
-[ext_resource type="FontFile" uid="uid://l3ypj80s7w7i" path="res://fonts/Lucida_Grande_Bold.ttf" id="1_e3wam"]
 [ext_resource type="Script" uid="uid://dfn52ptqdnh7i" path="res://screens/testdev/buttons.gd" id="1_ub5up"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ub5up"]
@@ -9,12 +8,12 @@
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_evg8b"]
+[sub_resource type="Sky" id="Sky_ub5up"]
 sky_material = SubResource("ProceduralSkyMaterial_ub5up")
 
 [sub_resource type="Environment" id="Environment_0150k"]
 background_mode = 2
-sky = SubResource("Sky_evg8b")
+sky = SubResource("Sky_ub5up")
 tonemap_mode = 2
 
 [node name="Main" type="Control"]
@@ -49,7 +48,6 @@ offset_top = 52.0
 offset_right = 127.0
 offset_bottom = 94.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_e3wam")
 theme_override_font_sizes/font_size = 45
 text = "testdev"
 horizontal_alignment = 1
@@ -64,35 +62,34 @@ offset_top = -105.0
 offset_right = 185.0
 offset_bottom = -38.9999
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_e3wam")
 theme_override_font_sizes/font_size = 22
 text = "back"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="simulation" type="SubViewportContainer" parent="."]
 layout_mode = 0
 offset_left = 129.0
 offset_top = 165.0
 offset_right = 641.0
 offset_bottom = 677.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="simulation"]
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="Node3D" type="Node3D" parent="simulation/SubViewport"]
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="simulation/SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.962168, -0.061348, 3.27932)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="simulation/SubViewport/Node3D"]
 mesh = SubResource("BoxMesh_ub5up")
 skeleton = NodePath("../..")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="simulation/SubViewport/Node3D"]
 environment = SubResource("Environment_0150k")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="simulation/SubViewport/Node3D"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6d4gjiipubr0"
-path="res://.godot/imported/icon_autosaver.png-55c98d7fbebfa4f3682998528b7c512a.ctex"
+uid="uid://dggc1tswrpqdg"
+path="res://.godot/imported/snapshot.png-51d4582c6300e124467b89b8b56f5735.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/autosaver_editor/icon_autosaver.png"
-dest_files=["res://.godot/imported/icon_autosaver.png-55c98d7fbebfa4f3682998528b7c512a.ctex"]
+source_file="res://snapshot.png"
+dest_files=["res://.godot/imported/snapshot.png-51d4582c6300e124467b89b8b56f5735.ctex"]
 
 [params]
 
