@@ -1,8 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cklcgbb1lkgau"]
 
 [ext_resource type="Script" uid="uid://cygto5lnstxq3" path="res://screens/mima3D/buttons.gd" id="1_w5ggl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_w5ggl"]
+[ext_resource type="PackedScene" uid="uid://blyecn3vvrk5f" path="res://assets/maze_runner.glb" id="2_w5ggl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4ucj"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -101,11 +100,7 @@ render_target_update_mode = 4
 [node name="Node3D" type="Node3D" parent="background/simulation/SubViewport"]
 
 [node name="Camera3D" type="Camera3D" parent="background/simulation/SubViewport/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.962168, -0.061348, 3.27932)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="background/simulation/SubViewport/Node3D"]
-mesh = SubResource("BoxMesh_w5ggl")
-skeleton = NodePath("../..")
+transform = Transform3D(-0.997916, 0.00562436, -0.0642868, 0, 0.996195, 0.0871557, 0.0645323, 0.0869741, -0.994118, 6.02233, 0.48069, -6.40123)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="background/simulation/SubViewport/Node3D"]
 environment = SubResource("Environment_dxm56")
@@ -113,6 +108,9 @@ environment = SubResource("Environment_dxm56")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background/simulation/SubViewport/Node3D"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Maze Runner" parent="background/simulation/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5074, 0, -1.15994)
 
 [node name="btnSnapshot" type="Button" parent="background"]
 layout_mode = 0

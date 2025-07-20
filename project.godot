@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="mimaclient"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

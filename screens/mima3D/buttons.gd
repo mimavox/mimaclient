@@ -1,3 +1,7 @@
+'''
+"Maze Runner" (https://skfb.ly/DqJI) by BinayakGhosh is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+'''
+
 extends ColorRect
 
 
@@ -5,7 +9,6 @@ extends ColorRect
 func _ready() -> void:
 	var apiurl = "http://localhost"
 	print(apiurl)
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
