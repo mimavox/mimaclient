@@ -1,7 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://cklcgbb1lkgau"]
+[gd_scene load_steps=12 format=3 uid="uid://cklcgbb1lkgau"]
 
 [ext_resource type="PackedScene" uid="uid://blyecn3vvrk5f" path="res://assets/maze_runner.glb" id="2_w5ggl"]
 [ext_resource type="Script" uid="uid://bocpmmcxd0a1t" path="res://screens/mima3D/movement_controller.gd" id="3_c4ucj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w5ggl"]
+viewport_path = NodePath("Simulation/SIMviewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c4ucj"]
+viewport_path = NodePath("Simulation/CharacterBody3D/POVviewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5ggl"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4ucj"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -14,17 +27,20 @@ sky_material = SubResource("ProceduralSkyMaterial_c4ucj")
 background_mode = 2
 sky = SubResource("Sky_evg8b")
 tonemap_mode = 2
+ssil_intensity = 13.8
+glow_intensity = 7.9
+fog_enabled = true
+fog_mode = 1
+fog_light_energy = 1.96
+fog_sun_scatter = 0.26
+fog_density = 1.0
+fog_height = 105.03
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5ggl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_c4ucj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5ggl"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5ggl"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -113,45 +129,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="EnvSimulation" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer/Environment"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Environment"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation"]
-handle_input_locally = false
-snap_2d_vertices_to_pixel = true
-render_target_update_mode = 4
-
-[node name="Node3D" type="Node3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport"]
-
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
-transform = Transform3D(-0.997916, 0.00562436, -0.0642868, 0, 0.996195, 0.0871557, 0.0645323, 0.0869741, -0.994118, 6.02233, 0.48069, -6.40123)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
-environment = SubResource("Environment_dxm56")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Maze Runner" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5074, 0, -1.15994)
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
-script = ExtResource("3_c4ucj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
-shape = SubResource("CapsuleShape3D_w5ggl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_c4ucj")
-
-[node name="CameraController" type="Node3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D"]
-transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
-
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D/CameraController"]
+texture = SubResource("ViewportTexture_w5ggl")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="btnBack" type="Button" parent="VBoxContainer/HBoxContainer/Environment"]
 layout_mode = 2
@@ -203,45 +185,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="AgentPOV" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer/Agent"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Agent"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV"]
-handle_input_locally = false
-snap_2d_vertices_to_pixel = true
-render_target_update_mode = 4
-
-[node name="Node3D" type="Node3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport"]
-
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
-transform = Transform3D(-0.997916, 0.00562436, -0.0642868, 0, 0.996195, 0.0871557, 0.0645323, 0.0869741, -0.994118, 6.02233, 0.48069, -6.40123)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
-environment = SubResource("Environment_dxm56")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Maze Runner" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5074, 0, -1.15994)
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
-script = ExtResource("3_c4ucj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
-shape = SubResource("CapsuleShape3D_w5ggl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_c4ucj")
-
-[node name="CameraController" type="Node3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D"]
-transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
-
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D/CameraController"]
+texture = SubResource("ViewportTexture_c4ucj")
 
 [node name="AgentOutput" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Agent"]
 clip_contents = false
@@ -255,3 +201,44 @@ theme_override_font_sizes/bold_font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_w5ggl")
 text = " hrkwejr kwejhwek wejhr kwer hwkerh wker hwkerh wkerh wkerh kwer hkwer hkwer "
 fit_content = true
+
+[node name="Simulation" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Simulation"]
+environment = SubResource("Environment_dxm56")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Simulation"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Maze Runner" parent="Simulation" instance=ExtResource("2_w5ggl")]
+transform = Transform3D(1, -0.000349899, 0.000196237, 0.000349897, 1, 1.43057e-05, -0.000196241, -1.42549e-05, 1, 2.5074, 0, -1.15994)
+
+[node name="SIMviewport" type="SubViewport" parent="Simulation"]
+msaa_2d = 1
+msaa_3d = 1
+
+[node name="SIMcamera" type="Camera3D" parent="Simulation/SIMviewport"]
+transform = Transform3D(-0.999963, 0.00549691, -0.00661138, -0.00647748, 0.0240302, 0.99969, 0.00565408, 0.999696, -0.0239937, 2.37355, 5.51512, -1.02602)
+fov = 106.875
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Simulation"]
+script = ExtResource("3_c4ucj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Simulation/CharacterBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
+shape = SubResource("CapsuleShape3D_w5ggl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Simulation/CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_c4ucj")
+surface_material_override/0 = SubResource("StandardMaterial3D_w5ggl")
+
+[node name="POVviewport" type="SubViewport" parent="Simulation/CharacterBody3D"]
+msaa_2d = 1
+msaa_3d = 1
+
+[node name="CameraController" type="Node3D" parent="Simulation/CharacterBody3D/POVviewport"]
+transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
+
+[node name="POVcamera" type="Camera3D" parent="Simulation/CharacterBody3D/POVviewport/CameraController"]
+transform = Transform3D(-0.0858735, 0, -1.06013, 0, 1.63704, 0, 1.45383, 0, -0.117764, 0, 0, 0)
