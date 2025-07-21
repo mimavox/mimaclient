@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cklcgbb1lkgau"]
+[gd_scene load_steps=9 format=3 uid="uid://cklcgbb1lkgau"]
 
 [ext_resource type="Script" uid="uid://cygto5lnstxq3" path="res://screens/mima3D/buttons.gd" id="1_w5ggl"]
 [ext_resource type="PackedScene" uid="uid://blyecn3vvrk5f" path="res://assets/maze_runner.glb" id="2_w5ggl"]
+[ext_resource type="Script" uid="uid://bocpmmcxd0a1t" path="res://screens/mima3D/movement_controller.gd" id="3_c4ucj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4ucj"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -14,6 +15,10 @@ sky_material = SubResource("ProceduralSkyMaterial_c4ucj")
 background_mode = 2
 sky = SubResource("Sky_evg8b")
 tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5ggl"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c4ucj"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -111,6 +116,21 @@ shadow_enabled = true
 
 [node name="Maze Runner" parent="background/simulation/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5074, 0, -1.15994)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="background/simulation/SubViewport/Node3D"]
+script = ExtResource("3_c4ucj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="background/simulation/SubViewport/Node3D/CharacterBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
+shape = SubResource("CapsuleShape3D_w5ggl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/simulation/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_c4ucj")
+
+[node name="CameraController" type="Node3D" parent="background/simulation/SubViewport/Node3D/CharacterBody3D"]
+transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
+
+[node name="Camera3D" type="Camera3D" parent="background/simulation/SubViewport/Node3D/CharacterBody3D/CameraController"]
 
 [node name="btnSnapshot" type="Button" parent="background"]
 layout_mode = 0
