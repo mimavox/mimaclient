@@ -73,67 +73,85 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/Environment"]
+[node name="EnvControls" type="GridContainer" parent="VBoxContainer/HBoxContainer/Environment"]
 layout_mode = 2
 columns = 3
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/Environment/GridContainer"]
+[node name="btn1" type="Button" parent="VBoxContainer/HBoxContainer/Environment/EnvControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Environment/GridContainer"]
+[node name="btn2" type="Button" parent="VBoxContainer/HBoxContainer/Environment/EnvControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/Environment/GridContainer"]
+[node name="btn3" type="Button" parent="VBoxContainer/HBoxContainer/Environment/EnvControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="Simulation" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer/Environment"]
+[node name="btn4" type="Button" parent="VBoxContainer/HBoxContainer/Environment/EnvControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test"
+
+[node name="btn5" type="Button" parent="VBoxContainer/HBoxContainer/Environment/EnvControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test"
+
+[node name="btn6" type="Button" parent="VBoxContainer/HBoxContainer/Environment/EnvControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test"
+
+[node name="EnvSimulation" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer/Environment"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/Environment/Simulation"]
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation"]
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport"]
+[node name="Node3D" type="Node3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport"]
 
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
 transform = Transform3D(-0.997916, 0.00562436, -0.0642868, 0, 0.996195, 0.0871557, 0.0645323, 0.0869741, -0.994118, 6.02233, 0.48069, -6.40123)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
 environment = SubResource("Environment_dxm56")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Maze Runner" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
+[node name="Maze Runner" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5074, 0, -1.15994)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D"]
 script = ExtResource("3_c4ucj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
 shape = SubResource("CapsuleShape3D_w5ggl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
 mesh = SubResource("CapsuleMesh_c4ucj")
 
-[node name="CameraController" type="Node3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D/CharacterBody3D"]
+[node name="CameraController" type="Node3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D"]
 transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
 
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Environment/Simulation/SubViewport/Node3D/CharacterBody3D/CameraController"]
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Environment/EnvSimulation/SubViewport/Node3D/CharacterBody3D/CameraController"]
 
 [node name="btnBack" type="Button" parent="VBoxContainer/HBoxContainer/Environment"]
 layout_mode = 2
@@ -145,69 +163,87 @@ text = "< back"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/Agent"]
+[node name="AgentControls" type="GridContainer" parent="VBoxContainer/HBoxContainer/Agent"]
 layout_mode = 2
 columns = 3
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/Agent/GridContainer"]
+[node name="btn1" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Agent/GridContainer"]
+[node name="btn2" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/Agent/GridContainer"]
+[node name="btn3" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test"
 
-[node name="POV" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer/Agent"]
+[node name="btn4" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test"
+
+[node name="btn5" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test"
+
+[node name="btn6" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test"
+
+[node name="AgentPOV" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer/Agent"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/Agent/POV"]
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV"]
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport"]
+[node name="Node3D" type="Node3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport"]
 
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
 transform = Transform3D(-0.997916, 0.00562436, -0.0642868, 0, 0.996195, 0.0871557, 0.0645323, 0.0869741, -0.994118, 6.02233, 0.48069, -6.40123)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
 environment = SubResource("Environment_dxm56")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Maze Runner" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
+[node name="Maze Runner" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D" instance=ExtResource("2_w5ggl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5074, 0, -1.15994)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D"]
 script = ExtResource("3_c4ucj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
 shape = SubResource("CapsuleShape3D_w5ggl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D/CollisionShape3D"]
 mesh = SubResource("CapsuleMesh_c4ucj")
 
-[node name="CameraController" type="Node3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D/CharacterBody3D"]
+[node name="CameraController" type="Node3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D"]
 transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
 
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Agent/POV/SubViewport/Node3D/CharacterBody3D/CameraController"]
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/HBoxContainer/Agent/AgentPOV/SubViewport/Node3D/CharacterBody3D/CameraController"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Agent"]
+[node name="AgentOutput" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Agent"]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
