@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cklcgbb1lkgau"]
+[gd_scene load_steps=13 format=3 uid="uid://cklcgbb1lkgau"]
 
+[ext_resource type="Script" uid="uid://dgi5rq5a35kcc" path="res://screens/mima3D/mima_3d.gd" id="1_c4ucj"]
 [ext_resource type="PackedScene" uid="uid://blyecn3vvrk5f" path="res://assets/maze_runner.glb" id="2_w5ggl"]
 [ext_resource type="Script" uid="uid://bocpmmcxd0a1t" path="res://screens/mima3D/movement_controller.gd" id="3_c4ucj"]
 
@@ -57,6 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_c4ucj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -149,13 +151,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 columns = 3
 
-[node name="btn1" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
+[node name="btnObs" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "test"
+text = "send obs"
 
-[node name="btn2" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
+[node name="btnSnapshot" type="Button" parent="VBoxContainer/HBoxContainer/Agent/AgentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -242,3 +244,5 @@ transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 
 
 [node name="POVcamera" type="Camera3D" parent="Simulation/CharacterBody3D/POVviewport/CameraController"]
 transform = Transform3D(-0.0858735, 0, -1.06013, 0, 1.63704, 0, 1.45383, 0, -0.117764, 0, 0, 0)
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Agent/AgentControls/btnObs" to="." method="_on_btn_obs_pressed"]

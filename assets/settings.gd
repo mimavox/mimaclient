@@ -4,7 +4,7 @@ var baseurl = ""
 var apiurl = ""
 
 func init():
-	baseurl = "http://localhost"
+	baseurl = "http://localhost:8001"
 	apiurl = ""	
 
 func _input(event):
