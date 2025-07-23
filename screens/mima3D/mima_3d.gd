@@ -9,12 +9,17 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_btn_obs_pressed():
+	var subviewport = $Simulation/Agent/POVviewport
+	var texture = subviewport.get_texture()
+	var image = texture.get_image()
 	# Load image
+	'''
 	var image = Image.new()
 	var error = image.load("res://snapshot.png")
 	if error != OK:
 		print("Failed to load image")
 		return
+	'''
 	
 	# Create request node
 	var http = HTTPRequest.new()

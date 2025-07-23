@@ -8,7 +8,7 @@
 viewport_path = NodePath("Simulation/SIMviewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c4ucj"]
-viewport_path = NodePath("Simulation/CharacterBody3D/POVviewport")
+viewport_path = NodePath("Simulation/Agent/POVviewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5ggl"]
 content_margin_left = 10.0
@@ -224,25 +224,25 @@ msaa_3d = 1
 transform = Transform3D(-0.999963, 0.00549691, -0.00661138, -0.00647748, 0.0240302, 0.99969, 0.00565408, 0.999696, -0.0239937, 2.37355, 5.51512, -1.02602)
 fov = 106.875
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Simulation"]
+[node name="Agent" type="CharacterBody3D" parent="Simulation"]
 script = ExtResource("3_c4ucj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Simulation/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Simulation/Agent"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.245882, 0.29738, 0)
 shape = SubResource("CapsuleShape3D_w5ggl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Simulation/CharacterBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Simulation/Agent/CollisionShape3D"]
 mesh = SubResource("CapsuleMesh_c4ucj")
 surface_material_override/0 = SubResource("StandardMaterial3D_w5ggl")
 
-[node name="POVviewport" type="SubViewport" parent="Simulation/CharacterBody3D"]
+[node name="POVviewport" type="SubViewport" parent="Simulation/Agent"]
 msaa_2d = 1
 msaa_3d = 1
 
-[node name="CameraController" type="Node3D" parent="Simulation/CharacterBody3D/POVviewport"]
+[node name="CameraController" type="Node3D" parent="Simulation/Agent/POVviewport"]
 transform = Transform3D(0.9402, 0, 0, 0, 0.610858, 0, 0, 0, 0.685591, 0.241057, 0.346766, 0)
 
-[node name="POVcamera" type="Camera3D" parent="Simulation/CharacterBody3D/POVviewport/CameraController"]
+[node name="POVcamera" type="Camera3D" parent="Simulation/Agent/POVviewport/CameraController"]
 transform = Transform3D(-0.0858735, 0, -1.06013, 0, 1.63704, 0, 1.45383, 0, -0.117764, 0, 0, 0)
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Agent/AgentControls/btnObs" to="." method="_on_btn_obs_pressed"]
