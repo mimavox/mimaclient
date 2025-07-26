@@ -1,3 +1,5 @@
+# API response example:  {"left":false,"right":true,"forward":false,"backward":false,"jump":true}
+
 extends Control
 
 # Called when the node enters the scene tree for the first time.
