@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfsugsdmwpj54"]
+
+[ext_resource type="Script" uid="uid://djplvu578tsx7" path="res://screens/runner.gd" id="1_bsjqw"]
+[ext_resource type="Texture2D" uid="uid://cvu1tv663cra3" path="res://assets/home.svg" id="2_k6sxx"]
+
+[node name="Runner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bsjqw")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.23921569, 0.4509804, 0.3529412, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -928.0
+offset_top = 32.0
+offset_right = -509.0
+offset_bottom = 117.0
+grow_horizontal = 2
+
+[node name="btnDesigner" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "mind designer"
+
+[node name="btnRunner" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "mind runner"
+
+[node name="btnHome" type="Button" parent="Background"]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 996.99994
+offset_right = 552.0
+offset_bottom = 1480.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 16
+icon = ExtResource("2_k6sxx")
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 1538.0
+offset_top = 25.0
+offset_right = 1884.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 50
+text = "mind runner"
+
+[connection signal="pressed" from="Background/HBoxContainer/btnDesigner" to="." method="_on_btn_designer_pressed"]
+[connection signal="pressed" from="Background/btnHome" to="." method="_on_btn_home_pressed"]
