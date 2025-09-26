@@ -61,5 +61,34 @@ offset_bottom = 94.0
 theme_override_font_sizes/font_size = 50
 text = "mind designer"
 
+[node name="CenterContainer" type="CenterContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 68.0
+offset_top = -355.0
+offset_right = 1484.0
+offset_bottom = 407.0
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="Background/CenterContainer"]
+layout_mode = 2
+
+[node name="GraphNode" type="GraphNode" parent="Background/CenterContainer/GraphEdit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 310.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+resizable = true
+title = "Testnode"
+
 [connection signal="pressed" from="Background/HBoxContainer/btnRunner" to="." method="_on_btn_runner_pressed"]
 [connection signal="pressed" from="Background/btnHome" to="." method="_on_button_pressed"]
