@@ -13,82 +13,92 @@ grow_vertical = 2
 script = ExtResource("1_vhm8n")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.23921569, 0.4509804, 0.3529412, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -928.0
-offset_top = 32.0
-offset_right = -509.0
-offset_bottom = 117.0
-grow_horizontal = 2
-
-[node name="btnDesigner" type="Button" parent="Background/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-disabled = true
-text = "mind designer"
-
-[node name="btnRunner" type="Button" parent="Background/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "mind runner"
-
 [node name="btnHome" type="Button" parent="Background"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 997.0
-offset_right = 552.0
-offset_bottom = 1480.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -70.0
+offset_right = 538.0
+offset_bottom = 413.00012
+grow_vertical = 0
 scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 16
 icon = ExtResource("2_ytoct")
 
 [node name="Label" type="Label" parent="Background"]
-layout_mode = 0
-offset_left = 1538.0
-offset_top = 25.0
-offset_right = 1884.0
-offset_bottom = 94.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -2380.0
+offset_top = 70.0
+offset_right = -2034.0
+offset_bottom = 139.79166
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 50
 text = "mind designer"
 
-[node name="CenterContainer" type="CenterContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 68.0
-offset_top = -355.0
-offset_right = 1484.0
-offset_bottom = 407.0
-grow_vertical = 2
-
-[node name="GraphEdit" type="GraphEdit" parent="Background/CenterContainer"]
-layout_mode = 2
-
-[node name="GraphNode" type="GraphNode" parent="Background/CenterContainer/GraphEdit"]
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 310.0
-offset_bottom = 193.0
+offset_left = -1100.0
+offset_top = -505.0
+offset_right = 1100.0
+offset_bottom = 495.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-resizable = true
-title = "Testnode"
 
-[connection signal="pressed" from="Background/HBoxContainer/btnRunner" to="." method="_on_btn_runner_pressed"]
+[node name="GraphEdit" type="GraphEdit" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="GraphNode" type="GraphNode" parent="Background/MarginContainer/GraphEdit"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 122.0
+offset_right = 433.0
+offset_bottom = 281.0
+mouse_filter = 1
+position_offset = Vector2(240, 122)
+title = "Testnod"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -278.75
+offset_top = 60.0
+offset_right = 278.75
+offset_bottom = 135.0
+grow_horizontal = 2
+scale = Vector2(1.2, 1.2)
+
+[node name="btnDesigner" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "mind designer"
+
+[node name="btnRunner" type="Button" parent="Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "mind runner"
+
 [connection signal="pressed" from="Background/btnHome" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/btnRunner" to="." method="_on_btn_runner_pressed"]
