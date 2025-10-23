@@ -63,17 +63,30 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GraphEdit" type="GraphEdit" parent="Background/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GraphNode" type="GraphNode" parent="Background/MarginContainer/GraphEdit"]
+[node name="Testnod" type="GraphNode" parent="Background/MarginContainer/GraphEdit"]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 122.0
-offset_right = 433.0
-offset_bottom = 281.0
+offset_right = 570.0
+offset_bottom = 343.0
 mouse_filter = 1
 position_offset = Vector2(240, 122)
 title = "Testnod"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Control" type="Control" parent="Background/MarginContainer/GraphEdit/Testnod"]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background"]
 layout_mode = 1
@@ -100,5 +113,35 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "mind runner"
 
-[connection signal="pressed" from="Background/btnHome" to="." method="_on_button_pressed"]
+[node name="Button" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047000002
+anchor_top = 0.347
+anchor_right = 0.047000002
+anchor_bottom = 0.347
+offset_left = 679.68
+offset_top = 800.32
+offset_right = 790.68
+offset_bottom = 856.32
+text = "NEW"
+
+[node name="Button2" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047000002
+anchor_top = 0.347
+anchor_right = 0.047000002
+anchor_bottom = 0.347
+offset_left = 879.68
+offset_top = 800.32
+offset_right = 990.68
+offset_bottom = 856.32
+text = "PRINT"
+
+[connection signal="pressed" from="Background/btnHome" to="." method="_on_btn_home_pressed"]
+[connection signal="connection_request" from="Background/MarginContainer/GraphEdit" to="." method="_on_graph_connection_request"]
+[connection signal="disconnection_request" from="Background/MarginContainer/GraphEdit" to="." method="_on_graph_disconnection_request"]
 [connection signal="pressed" from="Background/HBoxContainer/btnRunner" to="." method="_on_btn_runner_pressed"]
+[connection signal="pressed" from="Background/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/Button2" to="." method="_on_button_2_pressed"]
