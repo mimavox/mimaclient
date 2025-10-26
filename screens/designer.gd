@@ -38,7 +38,20 @@ func _on_graph_disconnection_request(from_node: StringName, from_port: int, to_n
 	graph.disconnect_node(from_node, from_port, to_node, to_port)
 
 
+func get_all_graph_nodes():
+	var graph_nodes = []
+	# get_children() returns an array of all direct child nodes
+	for child in graph.get_children():
+		# Check if the child is a GraphNode
+		if child is GraphNode:
+			graph_nodes.append(child.name)
+	return graph_nodes
+
 func _on_button_2_pressed() -> void:
-	var result = graph.get_connection_list()
-	print(JSON.stringify(result))
+	# List:
+	var nodes = get_all_graph_nodes()
+	print(JSON.stringify(nodes))
+	
+	var edges = graph.get_connection_list()
+	print(JSON.stringify(edges))
 	
