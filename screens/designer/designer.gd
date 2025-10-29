@@ -4,7 +4,7 @@ extends Control
 @onready var graph = %GraphEdit
 
 func _on_btn_runner_pressed() -> void:
-	get_tree().change_scene_to_file("res://screens/runner.tscn")
+	get_tree().change_scene_to_file("res://screens/runner/runner.tscn")
 
 func _on_btn_home_pressed() -> void:
 	get_tree().change_scene_to_file("res://screens/main.tscn")
@@ -51,6 +51,8 @@ func _on_button_2_pressed() -> void:
 	# List:
 	var nodes = get_all_graph_nodes()
 	print(JSON.stringify(nodes))
+	print(Global.graphedit_to_networkx("graph"))
+	print(Global.networkx_to_graphedit("net"))
 	
 	var edges = graph.get_connection_list()
 	print(JSON.stringify(edges))

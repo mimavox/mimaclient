@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfsugsdmwpj54"]
 
-[ext_resource type="Script" uid="uid://djplvu578tsx7" path="res://screens/runner.gd" id="1_bsjqw"]
+[ext_resource type="Script" uid="uid://djplvu578tsx7" path="res://screens/runner/runner.gd" id="1_bsjqw"]
 [ext_resource type="Texture2D" uid="uid://cvu1tv663cra3" path="res://assets/home.svg" id="2_k6sxx"]
 
 [node name="Runner" type="Control"]
