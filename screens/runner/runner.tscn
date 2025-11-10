@@ -243,3 +243,4 @@ transform = Transform3D(0.17713623, 0, 0.98418635, 0, 1, 0, -0.98418635, 0, 0.17
 
 [connection signal="pressed" from="Background/btnHome" to="." method="_on_btn_home_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/navigation/btnDesigner" to="." method="_on_btn_designer_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/content/agent/agentControls/btn1" to="." method="_on_btn_1_pressed"]
