@@ -94,36 +94,42 @@ columns = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test1"
 
 [node name="btn2" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test2"
 
 [node name="btn3" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test3"
 
 [node name="btn4" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test4"
 
 [node name="btn5" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test5"
 
 [node name="btn6" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test6"
 
 [node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/content/environment"]
@@ -143,36 +149,42 @@ columns = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "POV-test"
 
 [node name="btn2" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test2"
 
 [node name="btn3" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test3"
 
 [node name="btn4" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test4"
 
 [node name="btn5" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test5"
 
 [node name="btn6" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "test6"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/content/agent"]
