@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://5cpxmlg0recs"]
 
 [ext_resource type="Script" uid="uid://c3326f17bj1bt" path="res://screens/designer/designer.gd" id="1_vhm8n"]
-[ext_resource type="Texture2D" uid="uid://cvu1tv663cra3" path="res://assets/home.svg" id="2_ytoct"]
+[ext_resource type="Texture2D" uid="uid://dq8mast03tr2t" path="res://assets/home.png" id="2_am42k"]
 
 [node name="Designer" type="Control"]
 layout_mode = 3
@@ -21,57 +21,49 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23921569, 0.4509804, 0.3529412, 1)
 
-[node name="btnHome" type="Button" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = -70.0
-offset_right = 538.0
-offset_bottom = 413.00012
-grow_vertical = 0
-scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 16
-icon = ExtResource("2_ytoct")
-
-[node name="Label" type="Label" parent="Background"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -2380.0
-offset_top = 70.0
-offset_right = -2034.0
-offset_bottom = 139.79166
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 50
-text = "mind designer"
-
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1100.0
-offset_top = -505.0
-offset_right = 1100.0
-offset_bottom = 495.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="GraphEdit" type="GraphEdit" parent="Background/MarginContainer"]
+[node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "mind designer"
+
+[node name="btnRunner" type="Button" parent="Background/VBoxContainer/navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "mind runner"
+
+[node name="content" type="MarginContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GraphEdit" type="GraphEdit" parent="Background/VBoxContainer/content"]
 unique_name_in_owner = true
 layout_mode = 2
+scroll_offset = Vector2(-978, -264)
 
-[node name="Testnod" type="GraphNode" parent="Background/MarginContainer/GraphEdit"]
+[node name="Testnod" type="GraphNode" parent="Background/VBoxContainer/content/GraphEdit"]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 122.0
-offset_right = 570.0
-offset_bottom = 343.0
+offset_left = 1218.0
+offset_top = 386.0
+offset_right = 1548.0
+offset_bottom = 607.0
 mouse_filter = 1
 position_offset = Vector2(240, 122)
 title = "Testnod"
@@ -85,63 +77,43 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 
-[node name="Control" type="Control" parent="Background/MarginContainer/GraphEdit/Testnod"]
+[node name="Control" type="Control" parent="Background/VBoxContainer/content/GraphEdit/Testnod"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -278.75
-offset_top = 60.0
-offset_right = 278.75
-offset_bottom = 135.0
-grow_horizontal = 2
-scale = Vector2(1.2, 1.2)
-
-[node name="btnDesigner" type="Button" parent="Background/HBoxContainer"]
+[node name="footer" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
-disabled = true
-text = "mind designer"
 
-[node name="btnRunner" type="Button" parent="Background/HBoxContainer"]
+[node name="btnHome" type="Button" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
-text = "mind runner"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/h_separation = 3
+theme_override_font_sizes/font_size = 16
+icon = ExtResource("2_am42k")
+flat = true
 
-[node name="Button" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.047000002
-anchor_top = 0.347
-anchor_right = 0.047000002
-anchor_bottom = 0.347
-offset_left = 679.68
-offset_top = 800.32
-offset_right = 790.68
-offset_bottom = 856.32
+[node name="Button" type="Button" parent="Background/VBoxContainer/footer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 text = "NEW"
 
-[node name="Button2" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.047000002
-anchor_top = 0.347
-anchor_right = 0.047000002
-anchor_bottom = 0.347
-offset_left = 879.68
-offset_top = 800.32
-offset_right = 990.68
-offset_bottom = 856.32
+[node name="Button2" type="Button" parent="Background/VBoxContainer/footer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 text = "PRINT"
 
-[connection signal="pressed" from="Background/btnHome" to="." method="_on_btn_home_pressed"]
-[connection signal="connection_request" from="Background/MarginContainer/GraphEdit" to="." method="_on_graph_connection_request"]
-[connection signal="disconnection_request" from="Background/MarginContainer/GraphEdit" to="." method="_on_graph_disconnection_request"]
-[connection signal="pressed" from="Background/HBoxContainer/btnRunner" to="." method="_on_btn_runner_pressed"]
-[connection signal="pressed" from="Background/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Background/Button2" to="." method="_on_button_2_pressed"]
+[node name="Label" type="Label" parent="Background/VBoxContainer/footer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "mind designer"
+
+[connection signal="pressed" from="Background/VBoxContainer/navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
+[connection signal="connection_request" from="Background/VBoxContainer/content/GraphEdit" to="." method="_on_graph_connection_request"]
+[connection signal="disconnection_request" from="Background/VBoxContainer/content/GraphEdit" to="." method="_on_graph_disconnection_request"]
+[connection signal="pressed" from="Background/VBoxContainer/footer/btnHome" to="." method="_on_btn_home_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/footer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/footer/Button2" to="." method="_on_button_2_pressed"]

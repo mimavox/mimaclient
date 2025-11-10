@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://7c816uobhdtv"]
 
 [ext_resource type="Script" uid="uid://cplojukveoo6u" path="res://screens/main.gd" id="1_0vcwn"]
-[ext_resource type="Texture2D" uid="uid://cg2n0s7v3clix" path="res://mima.svg" id="1_wtj3h"]
+[ext_resource type="Texture2D" uid="uid://cg2n0s7v3clix" path="res://assets/mima.svg" id="2_0vcwn"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -13,39 +13,51 @@ grow_vertical = 2
 script = ExtResource("1_0vcwn")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 2560.0
-offset_bottom = 1440.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.14901961, 0.22352941, 0.2509804, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -278.75
-offset_top = 60.0
-offset_right = 278.75
-offset_bottom = 135.0
+offset_left = -205.5
+offset_right = 205.5
+offset_bottom = 54.0
 grow_horizontal = 2
-scale = Vector2(1.2, 1.2)
 
-[node name="btnDesigner" type="Button" parent="Background/HBoxContainer"]
+[node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 text = "mind designer"
 
-[node name="btnRunner" type="Button" parent="Background/HBoxContainer"]
+[node name="btnRunner" type="Button" parent="Background/VBoxContainer/navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 text = "mind runner"
 
-[node name="Mima" type="Sprite2D" parent="."]
-position = Vector2(1294, 630.00006)
-scale = Vector2(2.4649994, 2.4649997)
-texture = ExtResource("1_wtj3h")
+[node name="content" type="CenterContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[connection signal="pressed" from="Background/HBoxContainer/btnDesigner" to="." method="_on_btn_designer_pressed"]
-[connection signal="pressed" from="Background/HBoxContainer/btnRunner" to="." method="_on_btn_runner_pressed"]
+[node name="Mima" type="Sprite2D" parent="Background/VBoxContainer/content"]
+position = Vector2(-388.5, 344)
+scale = Vector2(3, 3)
+texture = ExtResource("2_0vcwn")
+centered = false
+
+[connection signal="pressed" from="Background/VBoxContainer/navigation/btnDesigner" to="." method="_on_btn_designer_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
