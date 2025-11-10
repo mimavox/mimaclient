@@ -51,8 +51,8 @@ func _on_button_2_pressed() -> void:
 	# List:
 	var nodes = get_all_graph_nodes()
 	print(JSON.stringify(nodes))
-	print(Global.graphedit_to_networkx("graph"))
-	print(Global.networkx_to_graphedit("net"))
+	print(globals.graphedit_to_networkx("graph"))
+	print(globals.networkx_to_graphedit("net"))
 	
 	var edges = graph.get_connection_list()
 	print(JSON.stringify(edges))

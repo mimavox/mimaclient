@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfsugsdmwpj54"]
+[gd_scene load_steps=12 format=3 uid="uid://cfsugsdmwpj54"]
 
 [ext_resource type="Script" uid="uid://djplvu578tsx7" path="res://screens/runner/runner.gd" id="1_bsjqw"]
 [ext_resource type="Texture2D" uid="uid://cvu1tv663cra3" path="res://assets/home.svg" id="2_k6sxx"]
+[ext_resource type="PackedScene" uid="uid://luni832m2b2a" path="res://assets/maze_runner.glb" id="3_7hnt0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ojwkf"]
+viewport_path = NodePath("Simulation/ENV")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7hnt0"]
+viewport_path = NodePath("Simulation/CharacterBody3D/POV")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hnt0"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojwkf"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_qc5un"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7hnt0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ojwkf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qc5un"]
 
 [node name="Runner" type="Control"]
 layout_mode = 3
@@ -18,44 +39,6 @@ offset_right = 2560.0
 offset_bottom = 1440.0
 color = Color(0.23921569, 0.4509804, 0.3529412, 1)
 
-[node name="Label" type="Label" parent="Background"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -2380.0
-offset_top = 70.0
-offset_right = -2034.0
-offset_bottom = 139.79166
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 50
-text = "mind runner"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -278.75
-offset_top = 60.0
-offset_right = 278.75
-offset_bottom = 135.0
-grow_horizontal = 2
-scale = Vector2(1.2, 1.2)
-
-[node name="btnDesigner" type="Button" parent="Background/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
-text = "mind designer"
-
-[node name="btnRunner" type="Button" parent="Background/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
-disabled = true
-text = "mind runner"
-
 [node name="btnHome" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 2
@@ -70,5 +53,193 @@ scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 16
 icon = ExtResource("2_k6sxx")
 
-[connection signal="pressed" from="Background/HBoxContainer/btnDesigner" to="." method="_on_btn_designer_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "mind designer"
+
+[node name="btnRunner" type="Button" parent="Background/VBoxContainer/navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "mind runner"
+
+[node name="content" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="environment" type="VBoxContainer" parent="Background/VBoxContainer/content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="envControls" type="GridContainer" parent="Background/VBoxContainer/content/environment"]
+layout_mode = 2
+columns = 3
+
+[node name="btn1" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test1"
+
+[node name="btn2" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test2"
+
+[node name="btn3" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test3"
+
+[node name="btn4" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test4"
+
+[node name="btn5" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test5"
+
+[node name="btn6" type="Button" parent="Background/VBoxContainer/content/environment/envControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test6"
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/content/environment"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("ViewportTexture_ojwkf")
+
+[node name="agent" type="VBoxContainer" parent="Background/VBoxContainer/content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="agentControls" type="GridContainer" parent="Background/VBoxContainer/content/agent"]
+layout_mode = 2
+columns = 3
+
+[node name="btn1" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "POV-test"
+
+[node name="btn2" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test2"
+
+[node name="btn3" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test3"
+
+[node name="btn4" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test4"
+
+[node name="btn5" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test5"
+
+[node name="btn6" type="Button" parent="Background/VBoxContainer/content/agent/agentControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test6"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/content/agent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/content/agent/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("ViewportTexture_7hnt0")
+stretch_mode = 2
+
+[node name="agentOutput" type="RichTextLabel" parent="Background/VBoxContainer/content/agent/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 0.019607844, 1)
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_7hnt0")
+theme_override_styles/background = SubResource("StyleBoxFlat_ojwkf")
+text = "OUTPUT
+
+
+
+
+
+"
+fit_content = true
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+offset_right = 411.0
+offset_bottom = 69.791664
+theme_override_font_sizes/font_size = 50
+text = "mind runner"
+
+[node name="Simulation" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Simulation"]
+environment = SubResource("Environment_qc5un")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Simulation"]
+
+[node name="Maze Runner" parent="Simulation" instance=ExtResource("3_7hnt0")]
+transform = Transform3D(0.9995034, -0.00010480574, 0.031514782, 7.5028234e-05, 0.9999996, 0.00094663305, -0.031514883, -0.0009438044, 0.99950296, 0, -0.023761988, -0.10198152)
+
+[node name="ENV" type="SubViewport" parent="Simulation"]
+
+[node name="envCamera" type="Camera3D" parent="Simulation/ENV"]
+transform = Transform3D(0.026191514, 0.99960345, -0.010342697, 0.016208047, 0.00992025, 0.99981946, 0.9995256, -0.026354417, -0.015941793, -0.037751794, 6.4061446, 0)
+fov = 86.88929
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Simulation"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.31815088, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Simulation/CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_7hnt0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Simulation/CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_ojwkf")
+surface_material_override/0 = SubResource("StandardMaterial3D_qc5un")
+
+[node name="POV" type="SubViewport" parent="Simulation/CharacterBody3D"]
+
+[node name="Node3D" type="Node3D" parent="Simulation/CharacterBody3D/POV"]
+
+[node name="POVcamera" type="Camera3D" parent="Simulation/CharacterBody3D/POV/Node3D"]
+transform = Transform3D(0.17713623, 0, 0.98418635, 0, 1, 0, -0.98418635, 0, 0.17713623, 0, 0.3565868, 0)
+
 [connection signal="pressed" from="Background/btnHome" to="." method="_on_btn_home_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/navigation/btnDesigner" to="." method="_on_btn_designer_pressed"]
