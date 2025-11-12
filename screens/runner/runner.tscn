@@ -231,6 +231,14 @@ text = "mind runner"
 environment = SubResource("Environment_qc5un")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Simulation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6069572, 0)
+light_color = Color(1, 1, 0.6745098, 1)
+light_energy = 2.347
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 1.674
+light_angular_distance = 24.63
+light_specular = 2.516
+shadow_bias = 0.0
 
 [node name="Maze Runner" parent="Simulation" instance=ExtResource("3_7hnt0")]
 transform = Transform3D(0.9995034, -0.00010480574, 0.031514782, 7.5028234e-05, 0.9999996, 0.00094663305, -0.031514883, -0.0009438044, 0.99950296, 0, -0.023761988, -0.10198152)
@@ -238,7 +246,7 @@ transform = Transform3D(0.9995034, -0.00010480574, 0.031514782, 7.5028234e-05, 0
 [node name="ENV" type="SubViewport" parent="Simulation"]
 
 [node name="envCamera" type="Camera3D" parent="Simulation/ENV"]
-transform = Transform3D(0.026191514, 0.99960345, -0.010342697, 0.016208047, 0.00992025, 0.99981946, 0.9995256, -0.026354417, -0.015941793, -0.037751794, 6.4061446, 0)
+transform = Transform3D(0.031546734, 0.9994479, -0.010427965, 0.016208045, 0.009920249, 0.99981946, 0.99937093, -0.031710047, -0.015886147, -0.037751794, 6.4061446, 0)
 fov = 86.88929
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Simulation"]
