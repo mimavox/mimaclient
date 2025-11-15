@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://5cpxmlg0recs"]
+[gd_scene load_steps=4 format=3 uid="uid://5cpxmlg0recs"]
 
 [ext_resource type="Script" uid="uid://c3326f17bj1bt" path="res://screens/designer/designer.gd" id="1_vhm8n"]
 [ext_resource type="Texture2D" uid="uid://dq8mast03tr2t" path="res://assets/home.png" id="2_am42k"]
+[ext_resource type="Script" uid="uid://b3rkni1tgcxq5" path="res://screens/designer/popup_window.gd" id="3_mbg03"]
 
 [node name="Designer" type="Control"]
 layout_mode = 3
@@ -56,29 +57,6 @@ size_flags_vertical = 3
 [node name="GraphEdit" type="GraphEdit" parent="Background/VBoxContainer/content"]
 unique_name_in_owner = true
 layout_mode = 2
-scroll_offset = Vector2(-978, -264)
-
-[node name="Testnod" type="GraphNode" parent="Background/VBoxContainer/content/GraphEdit"]
-layout_mode = 0
-offset_left = 1218.0
-offset_top = 386.0
-offset_right = 1548.0
-offset_bottom = 607.0
-mouse_filter = 1
-position_offset = Vector2(240, 122)
-title = "Testnod"
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-
-[node name="Control" type="Control" parent="Background/VBoxContainer/content/GraphEdit/Testnod"]
-layout_mode = 2
 
 [node name="footer" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
@@ -92,17 +70,19 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("2_am42k")
 flat = true
 
-[node name="Button" type="Button" parent="Background/VBoxContainer/footer"]
+[node name="newBtn" type="Button" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-text = "NEW"
+theme_override_font_sizes/font_size = 24
+text = "Add module"
 
-[node name="Button2" type="Button" parent="Background/VBoxContainer/footer"]
+[node name="printBtn" type="Button" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-text = "PRINT"
+theme_override_font_sizes/font_size = 24
+text = "Print format"
 
 [node name="Label" type="Label" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
@@ -111,9 +91,77 @@ size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
 text = "mind designer"
 
+[node name="PopupWindow" type="Window" parent="Background/VBoxContainer/footer"]
+oversampling_override = 1.0
+title = "New module"
+initial_position = 1
+size = Vector2i(500, 349)
+visible = false
+wrap_controls = true
+popup_window = true
+popup_wm_hint = true
+force_native = true
+theme_override_constants/title_height = 24
+theme_override_constants/resize_margin = 18
+theme_override_font_sizes/title_font_size = 20
+script = ExtResource("3_mbg03")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/footer/PopupWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="optionLabel" type="Label" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Please choose a module type:"
+
+[node name="option" type="OptionButton" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Image to Text"
+popup/item_0/id = 0
+popup/item_1/text = "Text to text (prompt)"
+popup/item_1/id = 1
+popup/item_2/text = "Decide action"
+popup/item_2/id = 2
+
+[node name="inputLabel" type="Label" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Please describe the new module:"
+
+[node name="input" type="TextEdit" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+wrap_mode = 1
+scroll_smooth = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="btnCancel" type="Button" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[node name="btnOk" type="Button" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "OK"
+
 [connection signal="pressed" from="Background/VBoxContainer/navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
 [connection signal="connection_request" from="Background/VBoxContainer/content/GraphEdit" to="." method="_on_graph_connection_request"]
 [connection signal="disconnection_request" from="Background/VBoxContainer/content/GraphEdit" to="." method="_on_graph_disconnection_request"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/btnHome" to="." method="_on_btn_home_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/footer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/footer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/footer/newBtn" to="." method="_on_new_btn_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/footer/printBtn" to="." method="_on_print_btn_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer/btnOk" to="Background/VBoxContainer/footer/PopupWindow" method="_on_btn_ok_pressed"]

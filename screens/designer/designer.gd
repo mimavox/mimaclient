@@ -9,27 +9,6 @@ func _on_btn_runner_pressed() -> void:
 func _on_btn_home_pressed() -> void:
 	get_tree().change_scene_to_file("res://screens/main.tscn")
 
-func _on_button_pressed() -> void:
-	var node := GraphNode.new()
-	
-	node.title = "New node"
-	node.name = "New node"
-	
-	node.position_offset = Vector2(100, 150)
-	# node.position_offset.x = get_viewport().get_mouse_position().x
-	
-	# You can set the custom minimum size if you don't want it to resize automatically
-	node.custom_minimum_size = Vector2(200, 100)
-	
-	var slots = Control.new()
-	node.add_child(slots)
-	node.set_slot_enabled_left(0, true)
-	node.set_slot_enabled_right(0, true)
-
-	graph.add_child(node)
-
-
-
 func _on_graph_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	graph.connect_node(from_node, from_port, to_node, to_port)
 
@@ -47,7 +26,48 @@ func get_all_graph_nodes():
 			graph_nodes.append(child.name)
 	return graph_nodes
 
-func _on_button_2_pressed() -> void:
+
+func _on_new_btn_pressed() -> void:
+	
+	var popup = $Background/VBoxContainer/footer/PopupWindow
+	popup.open_popup()
+
+	await popup.submitted   # Execution pauses here until OK is pressed.
+
+	var option = popup.stored_option
+	var description = popup.stored_text
+	print("Creating new GraphNode named:", option)
+	
+	var gnode := GraphNode.new()
+	gnode.title = option
+	gnode.name = option
+	gnode.position_offset = Vector2(100, 150)
+	gnode.custom_minimum_size = Vector2(200, 50)
+
+	# Container to control width and force vertical expansion
+	var vbox := VBoxContainer.new()
+	vbox.size_flags_horizontal = Control.SIZE_FILL
+	vbox.size_flags_vertical = Control.SIZE_EXPAND
+	vbox.custom_minimum_size = Vector2(200, 0) # important: fixes wrap width
+	gnode.add_child(vbox)
+
+	# Label that will wrap inside the container
+	var lnode := Label.new()
+	lnode.text = description
+	lnode.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	#lnode.autowrap = true
+	lnode.size_flags_vertical = Control.SIZE_EXPAND | Control.SIZE_SHRINK_CENTER
+	vbox.add_child(lnode)
+
+	# Slots etc…
+	gnode.set_slot_enabled_left(0, true)
+	gnode.set_slot_enabled_right(0, true)
+
+	graph.add_child(gnode)
+
+
+
+func _on_print_btn_pressed() -> void:
 	# List:
 	var nodes = get_all_graph_nodes()
 	print(JSON.stringify(nodes))
@@ -56,4 +76,3 @@ func _on_button_2_pressed() -> void:
 	
 	var edges = graph.get_connection_list()
 	print(JSON.stringify(edges))
-	
