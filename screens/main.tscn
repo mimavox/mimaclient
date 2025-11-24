@@ -33,8 +33,7 @@ grow_horizontal = 2
 
 [node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 
 [node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation"]

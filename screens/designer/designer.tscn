@@ -84,6 +84,13 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 text = "Print format"
 
+[node name="btnSave" type="Button" parent="Background/VBoxContainer/footer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "Save graph"
+
 [node name="Label" type="Label" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
 size_flags_horizontal = 8
