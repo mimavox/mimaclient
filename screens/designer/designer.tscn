@@ -31,20 +31,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation"]
+[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 disabled = true
 text = "mind designer"
 
-[node name="btnRunner" type="Button" parent="Background/VBoxContainer/navigation"]
+[node name="btnRunner" type="Button" parent="Background/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
@@ -53,10 +53,42 @@ text = "mind runner"
 [node name="content" type="MarginContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
 
-[node name="GraphEdit" type="GraphEdit" parent="Background/VBoxContainer/content"]
+[node name="columns" type="HBoxContainer" parent="Background/VBoxContainer/content"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="GraphEdit" type="GraphEdit" parent="Background/VBoxContainer/content/columns"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+scroll_offset = Vector2(-8, 0)
+
+[node name="Buttons" type="VBoxContainer" parent="Background/VBoxContainer/content/columns"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="btnClear" type="Button" parent="Background/VBoxContainer/content/columns/Buttons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Clear"
+
+[node name="btnLoad" type="Button" parent="Background/VBoxContainer/content/columns/Buttons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Load
+"
+
+[node name="btnSave" type="Button" parent="Background/VBoxContainer/content/columns/Buttons"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Save"
 
 [node name="footer" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
@@ -70,26 +102,12 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("2_am42k")
 flat = true
 
-[node name="newBtn" type="Button" parent="Background/VBoxContainer/footer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
-text = "Add module"
-
 [node name="printBtn" type="Button" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 text = "Print format"
-
-[node name="btnSave" type="Button" parent="Background/VBoxContainer/footer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
-text = "Save graph"
 
 [node name="Label" type="Label" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
@@ -165,10 +183,22 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "OK"
 
-[connection signal="pressed" from="Background/VBoxContainer/navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
-[connection signal="connection_request" from="Background/VBoxContainer/content/GraphEdit" to="." method="_on_graph_connection_request"]
-[connection signal="disconnection_request" from="Background/VBoxContainer/content/GraphEdit" to="." method="_on_graph_disconnection_request"]
+[node name="btnAdd" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 2312.0
+offset_top = 96.0
+offset_right = 2398.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[connection signal="pressed" from="Background/VBoxContainer/Navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
+[connection signal="connection_request" from="Background/VBoxContainer/content/columns/GraphEdit" to="." method="_on_graph_connection_request"]
+[connection signal="disconnection_request" from="Background/VBoxContainer/content/columns/GraphEdit" to="." method="_on_graph_disconnection_request"]
+[connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnLoad" to="." method="_on_btn_load_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/btnHome" to="." method="_on_btn_home_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/footer/newBtn" to="." method="_on_new_btn_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/printBtn" to="." method="_on_print_btn_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer/btnOk" to="Background/VBoxContainer/footer/PopupWindow" method="_on_btn_ok_pressed"]
+[connection signal="pressed" from="Background/btnAdd" to="." method="_on_btn_add_pressed"]

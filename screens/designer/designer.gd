@@ -27,8 +27,32 @@ func get_all_graph_nodes():
 	return graph_nodes
 
 
-func _on_new_btn_pressed() -> void:
+
+
+
+func _on_print_btn_pressed() -> void:
+	# List:
+	var nodes = get_all_graph_nodes()
+	print(JSON.stringify(nodes))
+	print(globals.graphedit_to_networkx("graph"))
+	print(globals.networkx_to_graphedit("net"))
 	
+	var edges = graph.get_connection_list()
+	print(JSON.stringify(edges))
+
+
+func _on_btn_clear_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_load_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_save_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_btn_add_pressed() -> void:
 	var popup = $Background/VBoxContainer/footer/PopupWindow
 	popup.open_popup()
 
@@ -64,15 +88,3 @@ func _on_new_btn_pressed() -> void:
 	gnode.set_slot_enabled_right(0, true)
 
 	graph.add_child(gnode)
-
-
-
-func _on_print_btn_pressed() -> void:
-	# List:
-	var nodes = get_all_graph_nodes()
-	print(JSON.stringify(nodes))
-	print(globals.graphedit_to_networkx("graph"))
-	print(globals.networkx_to_graphedit("net"))
-	
-	var edges = graph.get_connection_list()
-	print(JSON.stringify(edges))
