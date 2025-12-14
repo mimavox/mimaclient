@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://5cpxmlg0recs"]
+[gd_scene load_steps=5 format=3 uid="uid://5cpxmlg0recs"]
 
 [ext_resource type="Script" uid="uid://c3326f17bj1bt" path="res://screens/designer/designer.gd" id="1_vhm8n"]
+[ext_resource type="Script" uid="uid://mvqw8y2wd5w" path="res://screens/designer/graph_edit.gd" id="2_45wie"]
 [ext_resource type="Texture2D" uid="uid://dq8mast03tr2t" path="res://assets/home.png" id="2_am42k"]
 [ext_resource type="Script" uid="uid://b3rkni1tgcxq5" path="res://screens/designer/popup_window.gd" id="3_mbg03"]
 
@@ -64,7 +65,7 @@ theme_override_constants/separation = 30
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-scroll_offset = Vector2(-8, 0)
+script = ExtResource("2_45wie")
 
 [node name="Buttons" type="VBoxContainer" parent="Background/VBoxContainer/content/columns"]
 layout_mode = 2
@@ -102,16 +103,9 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("2_am42k")
 flat = true
 
-[node name="printBtn" type="Button" parent="Background/VBoxContainer/footer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
-text = "Print format"
-
 [node name="Label" type="Label" parent="Background/VBoxContainer/footer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 10
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
 text = "mind designer"
@@ -185,10 +179,10 @@ text = "OK"
 
 [node name="btnAdd" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 2312.0
-offset_top = 96.0
-offset_right = 2398.0
-offset_bottom = 188.0
+offset_left = 1574.0
+offset_top = 641.0
+offset_right = 1660.0
+offset_bottom = 733.0
 theme_override_font_sizes/font_size = 50
 text = "+"
 
@@ -199,6 +193,5 @@ text = "+"
 [connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnLoad" to="." method="_on_btn_load_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/btnHome" to="." method="_on_btn_home_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/footer/printBtn" to="." method="_on_print_btn_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer/btnOk" to="Background/VBoxContainer/footer/PopupWindow" method="_on_btn_ok_pressed"]
 [connection signal="pressed" from="Background/btnAdd" to="." method="_on_btn_add_pressed"]
