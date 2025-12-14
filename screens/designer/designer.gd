@@ -18,6 +18,7 @@ func _on_btn_home_pressed() -> void:
 # --------------------------------------------------------
 
 
+
 func get_all_graph_nodes():
 	var graph_nodes = []
 	# get_children() returns an array of all direct child nodes
@@ -56,44 +57,52 @@ func _on_btn_add_pressed() -> void:
 	var popup = $Background/VBoxContainer/footer/PopupWindow
 	popup.open_popup()
 
-	await popup.submitted   # Execution pauses here until OK is pressed.
+	await popup.submitted  # Pause execution until the popup is closed.
 
 	var option = popup.stored_option
 	var description = popup.stored_text
 	var type_in = popup.type_in
 	var type_out = popup.type_out
-	
+
 	print("Creating new GraphNode named:", option)
-	
+
+	# Create the new GraphNode
 	var gnode := GraphNode.new()
-	gnode.title = option       # what the user sees
+	gnode.title = option       # Set title (what the user sees)
 	gnode.name = _make_unique_name(option)
 
+	# Assign a script to the GraphNode
+	var graph_node_script = load("res://screens/designer/graph_node.gd")  # Replace with the correct path
+	gnode.set_script(graph_node_script)
+
+	# Configure port types in the node script
+	gnode.input_port_types = [type_in]    # Add input port type
+	gnode.output_port_types = [type_out]  # Add output port type
+
+	# Customize the visual appearance of the node
 	gnode.position_offset = Vector2(100, 150)
 	gnode.custom_minimum_size = Vector2(200, 50)
 
-	# Container to control width and force vertical expansion
 	var vbox := VBoxContainer.new()
 	vbox.size_flags_horizontal = Control.SIZE_FILL
 	vbox.size_flags_vertical = Control.SIZE_EXPAND
-	vbox.custom_minimum_size = Vector2(200, 0) # important: fixes wrap width
+	vbox.custom_minimum_size = Vector2(200, 0)  # Fix wrap width
 	gnode.add_child(vbox)
 
-	# Label that will wrap inside the container
 	var lnode := Label.new()
 	lnode.text = description
 	lnode.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	#lnode.autowrap = true
 	lnode.size_flags_vertical = Control.SIZE_EXPAND | Control.SIZE_SHRINK_CENTER
 	vbox.add_child(lnode)
 
-	# Setting slots
+	# Configure the GraphNode ports
 	gnode.set_slot(
-		0,                             # Slot Index (0 for the first/only child)
+		0,
 		true, type_in, Color.WHITE,  # LEFT PORT (Input) Configuration
-		true, type_out, Color.RED # RIGHT PORT (Output) Configuration
+		true, type_out, Color.RED    # RIGHT PORT (Output) Configuration
 	)
 
+	# Add the GraphNode to the GraphEdit
 	graph.add_child(gnode)
 
 func _on_graph_connection_request(
