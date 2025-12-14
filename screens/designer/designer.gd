@@ -68,13 +68,13 @@ func _on_btn_add_pressed() -> void:
 
 	# Create the new GraphNode
 	var gnode := GraphNode.new()
+	var graph_node_script = load("res://screens/designer/graph_node.gd")  # Path to the script
+	gnode.set_script(graph_node_script)
+	
 	gnode.title = option       # Set title (what the user sees)
 	gnode.name = _make_unique_name(option)
 
-	# Assign a script to the GraphNode
-	var graph_node_script = load("res://screens/designer/graph_node.gd")  # Replace with the correct path
-	gnode.set_script(graph_node_script)
-
+	
 	# Configure port types in the node script
 	gnode.input_port_types = [type_in]    # Add input port type
 	gnode.output_port_types = [type_out]  # Add output port type
