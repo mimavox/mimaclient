@@ -3,6 +3,8 @@ extends Control
 # Marks the GraphEdit node for easy reference later on:
 @onready var graph = %GraphEdit
 
+
+
 func _ready():
 	graph.connection_request.connect(_on_graph_connection_request)
 	graph.disconnection_request.connect(_on_graph_disconnection_request)
