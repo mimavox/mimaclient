@@ -3,8 +3,6 @@ extends Control
 # Marks the GraphEdit node for easy reference later on:
 @onready var graph = %GraphEdit
 
-
-
 func _ready():
 	graph.connection_request.connect(_on_graph_connection_request)
 	graph.disconnection_request.connect(_on_graph_disconnection_request)
@@ -21,12 +19,11 @@ func _on_btn_home_pressed() -> void:
 
 func get_all_graph_nodes():
 	var graph_nodes = []
-	# get_children() returns an array of all direct child nodes
 	for child in graph.get_children():
-		# Check if the child is a GraphNode
 		if child is GraphNode:
-			graph_nodes.append(child.title)
+			graph_nodes.append(child.name)
 	return graph_nodes
+
 
 # UI buttons ----------------------------------------------
 
@@ -42,6 +39,7 @@ func _on_btn_load_pressed() -> void:
 func _on_btn_save_pressed() -> void:
 	var ge_nodes = get_all_graph_nodes()
 	var ge_edges = graph.get_connection_list()
+		
 	
 	var nx_nodes = globals.graphedit_to_networkx(ge_nodes, ge_edges)
 
@@ -116,7 +114,7 @@ func _on_graph_connection_request(
 
 	if source_node.get_slot_type_right(from_port) == target_node.get_slot_type_left(from_port):
 		graph.connect_node(from_node, from_port, to_node, to_port)
-		print("Connected %s:%s to %s:%s" % [from_node, from_port, to_node, to_port])
+		# print("Connected %s:%s to %s:%s" % [from_node, from_port, to_node, to_port])
 
 # Called when a node tries to disconnect from another
 func _on_graph_disconnection_request(
@@ -126,4 +124,4 @@ func _on_graph_disconnection_request(
 	to_port: int
 ) -> void:
 	graph.disconnect_node(from_node, from_port, to_node, to_port)
-	print("Disconnected %s:%s from %s:%s" % [from_node, from_port, to_node, to_port])
+	# print("Disconnected %s:%s from %s:%s" % [from_node, from_port, to_node, to_port])
