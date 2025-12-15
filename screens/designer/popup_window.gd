@@ -23,13 +23,14 @@ func open_popup():
 func _on_btn_ok_pressed():
 	stored_option = option_field.text
 	stored_text = input_field.text
-	if stored_option == "ItT":
+	
+	if stored_option == "Image to Text":
 		type_in = 2
 		type_out = 1
-	elif stored_option == "TtI":
+	elif stored_option == "Text to Image":
 		type_in = 1
 		type_out = 2
-	elif stored_option == "TtT":
+	elif stored_option == "Text to Text":
 		type_in = 1
 		type_out = 1
 	emit_signal("submitted")

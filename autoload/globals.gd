@@ -7,9 +7,13 @@ func init():
 	baseurl = "http://localhost:8001"
 	apiurl = ""
 
-func graphedit_to_networkx(nodes_json, edges_json) -> String:
-	print(nodes_json)
-	print(edges_json)
+func graphedit_to_networkx(nodes, edges) -> String:
+	
+	print(edges)
+	
+	for element in edges:
+		print(element["from_node"])
+		print(element["to_node"])
 	var myjson = "gton"
 	return JSON.stringify(myjson)
 

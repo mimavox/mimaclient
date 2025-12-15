@@ -41,8 +41,9 @@ func _on_btn_load_pressed() -> void:
 # Save the graph
 func _on_btn_save_pressed() -> void:
 	var ge_nodes = get_all_graph_nodes()
-	var ge_edges = graph.get_connection_list()	
-	var nx_nodes = globals.graphedit_to_networkx(JSON.stringify(ge_nodes), JSON.stringify(ge_edges))
+	var ge_edges = graph.get_connection_list()
+	
+	var nx_nodes = globals.graphedit_to_networkx(ge_nodes, ge_edges)
 
 func _make_unique_name(base: String) -> String:
 	var name = base
@@ -52,7 +53,7 @@ func _make_unique_name(base: String) -> String:
 		i += 1
 	return name
 
-# Add a module
+# Add a node
 func _on_btn_add_pressed() -> void:
 	var popup = $Background/VBoxContainer/footer/PopupWindow
 	popup.open_popup()
@@ -63,21 +64,12 @@ func _on_btn_add_pressed() -> void:
 	var description = popup.stored_text
 	var type_in = popup.type_in
 	var type_out = popup.type_out
-
-	print("Creating new GraphNode named:", option)
-
+	
 	# Create the new GraphNode
 	var gnode := GraphNode.new()
-	var graph_node_script = load("res://screens/designer/graph_node.gd")  # Path to the script
-	gnode.set_script(graph_node_script)
-	
-	gnode.title = option       # Set title (what the user sees)
+	gnode.ignore_invalid_connection_type = true	
+	gnode.title = option
 	gnode.name = _make_unique_name(option)
-
-	
-	# Configure port types in the node script
-	gnode.input_port_types = [type_in]    # Add input port type
-	gnode.output_port_types = [type_out]  # Add output port type
 
 	# Customize the visual appearance of the node
 	gnode.position_offset = Vector2(100, 150)
@@ -94,7 +86,7 @@ func _on_btn_add_pressed() -> void:
 	lnode.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lnode.size_flags_vertical = Control.SIZE_EXPAND | Control.SIZE_SHRINK_CENTER
 	vbox.add_child(lnode)
-
+	
 	# Configure the GraphNode ports
 	gnode.set_slot(
 		0,
@@ -105,6 +97,7 @@ func _on_btn_add_pressed() -> void:
 	# Add the GraphNode to the GraphEdit
 	graph.add_child(gnode)
 
+# Called when a node tries to connect to another
 func _on_graph_connection_request(
 	from_node: StringName,
 	from_port: int,
@@ -116,10 +109,16 @@ func _on_graph_connection_request(
 		if conn.from_node == from_node and conn.from_port == from_port:
 			graph.disconnect_node(conn.from_node, conn.from_port, conn.to_node, conn.to_port)
 			break
+	
+	
+	var source_node = get_node("Background/VBoxContainer/content/columns/GraphEdit/" + str(from_node))
+	var target_node = get_node("Background/VBoxContainer/content/columns/GraphEdit/" + str(to_node))
 
-	graph.connect_node(from_node, from_port, to_node, to_port)
-	print("Connected %s:%s to %s:%s" % [from_node, from_port, to_node, to_port])
+	if source_node.get_slot_type_right(from_port) == target_node.get_slot_type_left(from_port):
+		graph.connect_node(from_node, from_port, to_node, to_port)
+		print("Connected %s:%s to %s:%s" % [from_node, from_port, to_node, to_port])
 
+# Called when a node tries to disconnect from another
 func _on_graph_disconnection_request(
 	from_node: StringName,
 	from_port: int,
