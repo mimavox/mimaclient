@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://5cpxmlg0recs"]
+[gd_scene load_steps=5 format=3 uid="uid://5cpxmlg0recs"]
 
 [ext_resource type="Script" uid="uid://c3326f17bj1bt" path="res://screens/designer/designer.gd" id="1_vhm8n"]
+[ext_resource type="Script" uid="uid://ktkikfua1s72" path="res://screens/designer/graph_edit.gd" id="2_45wie"]
 [ext_resource type="Texture2D" uid="uid://dq8mast03tr2t" path="res://assets/home.png" id="2_am42k"]
 [ext_resource type="Script" uid="uid://b3rkni1tgcxq5" path="res://screens/designer/popup_window.gd" id="3_mbg03"]
 
@@ -64,6 +65,75 @@ theme_override_constants/separation = 30
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("2_45wie")
+
+[node name="PopupWindow" type="Window" parent="Background/VBoxContainer/content/columns/GraphEdit"]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "New module"
+initial_position = 1
+size = Vector2i(500, 349)
+visible = false
+wrap_controls = true
+popup_window = true
+popup_wm_hint = true
+force_native = true
+theme_override_constants/title_height = 24
+theme_override_constants/resize_margin = 18
+theme_override_font_sizes/title_font_size = 20
+script = ExtResource("3_mbg03")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="optionLabel" type="Label" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Please choose a module type:"
+
+[node name="option" type="OptionButton" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Image to Text"
+popup/item_0/id = 0
+popup/item_1/text = "Text to Text"
+popup/item_1/id = 1
+popup/item_2/text = "Decide action"
+popup/item_2/id = 2
+
+[node name="inputLabel" type="Label" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Please describe the new module:"
+
+[node name="input" type="TextEdit" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+wrap_mode = 1
+scroll_smooth = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="btnCancel" type="Button" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[node name="btnOk" type="Button" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "OK"
 
 [node name="Buttons" type="VBoxContainer" parent="Background/VBoxContainer/content/columns"]
 layout_mode = 2
@@ -108,88 +178,21 @@ size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
 text = "mind designer"
 
-[node name="PopupWindow" type="Window" parent="Background/VBoxContainer/footer"]
-oversampling_override = 1.0
-title = "New module"
-initial_position = 1
-size = Vector2i(500, 349)
-visible = false
-wrap_controls = true
-popup_window = true
-popup_wm_hint = true
-force_native = true
-theme_override_constants/title_height = 24
-theme_override_constants/resize_margin = 18
-theme_override_font_sizes/title_font_size = 20
-script = ExtResource("3_mbg03")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/footer/PopupWindow"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-
-[node name="optionLabel" type="Label" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 24
-text = "Please choose a module type:"
-
-[node name="option" type="OptionButton" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
-layout_mode = 2
-item_count = 3
-popup/item_0/text = "Image to Text"
-popup/item_0/id = 0
-popup/item_1/text = "Text to Text"
-popup/item_1/id = 1
-popup/item_2/text = "Decide action"
-popup/item_2/id = 2
-
-[node name="inputLabel" type="Label" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Please describe the new module:"
-
-[node name="input" type="TextEdit" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 24
-wrap_mode = 1
-scroll_smooth = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer"]
-layout_mode = 2
-
-[node name="btnCancel" type="Button" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Cancel"
-
-[node name="btnOk" type="Button" parent="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "OK"
-
 [node name="btnAdd" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 1574.0
-offset_top = 641.0
-offset_right = 1660.0
-offset_bottom = 733.0
+offset_left = 45.0
+offset_top = 115.0
+offset_right = 131.0
+offset_bottom = 207.0
 theme_override_font_sizes/font_size = 50
 text = "+"
 
 [connection signal="pressed" from="Background/VBoxContainer/Navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
 [connection signal="connection_request" from="Background/VBoxContainer/content/columns/GraphEdit" to="." method="_on_graph_connection_request"]
 [connection signal="disconnection_request" from="Background/VBoxContainer/content/columns/GraphEdit" to="." method="_on_graph_disconnection_request"]
+[connection signal="pressed" from="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer/btnOk" to="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow" method="_on_btn_ok_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnClear" to="." method="_on_btn_clear_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnLoad" to="." method="_on_btn_load_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/content/columns/Buttons/btnSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/footer/btnHome" to="." method="_on_btn_home_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/footer/PopupWindow/VBoxContainer/HBoxContainer/btnOk" to="Background/VBoxContainer/footer/PopupWindow" method="_on_btn_ok_pressed"]
-[connection signal="pressed" from="Background/btnAdd" to="." method="_on_btn_add_pressed"]
+[connection signal="pressed" from="Background/btnAdd" to="Background/VBoxContainer/content/columns/GraphEdit" method="_on_btn_add_pressed"]
