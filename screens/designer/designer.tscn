@@ -99,6 +99,7 @@ text = "Please choose a module type:"
 
 [node name="option" type="OptionButton" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
 layout_mode = 2
+allow_reselect = true
 item_count = 3
 popup/item_0/text = "Image to Text"
 popup/item_0/id = 0

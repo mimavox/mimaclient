@@ -15,23 +15,34 @@ func exist_disconnected_nodes(node_list, edge_list):
 			return true
 	return false
 
-func graphedit_to_networkx(nodes, edges) -> String:
+func graphedit_to_networkx(nodes: Array, edges: Array) -> String:
+	var node_list = []
+	var edge_list = []
 	
-	var cog_graph = []
+	for node in nodes:
+		var node_dict = {}
+		node_dict['id'] = node
+		node_list.append(node_dict)
 	
-	for element in edges:
-		cog_graph.append(element["from_node"])
-		cog_graph.append(element["to_node"])
+	for edge in edges:
+		var edge_dict = {}
+		var source = edge["from_node"]
+		var target = edge["to_node"]
+		edge_dict["source"] = source
+		edge_dict["target"] = target
+		edge_list.append(edge_dict)
 	
-		print(exist_disconnected_nodes(nodes, cog_graph))
-
-	print("Node list: ", nodes)
+	var graph_dict = {}
+	graph_dict["directed"] = true
+	graph_dict["multigraph"] = false
+	graph_dict["graph"] = {}
+	graph_dict["nodes"] = node_list
+	graph_dict["edges"] = edge_list
 	
-	print("Connections: ", cog_graph)
+	var graph_json = JSON.stringify(graph_dict)
+	print(graph_json)
 	
-	
-	var myjson = "gton"
-	return JSON.stringify(myjson)
+	return graph_json
 
 func networkx_to_graphedit(nx_json) -> String:
 	print(nx_json)
