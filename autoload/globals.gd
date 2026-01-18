@@ -1,11 +1,11 @@
 extends Node
 
-var baseurl = ""
 var apiurl = ""
+var logged_in = ""
 
 func init():
-	baseurl = "http://localhost:8001"
-	apiurl = ""
+	apiurl = "http://127.0.0.1:8000"
+	logged_in = false
 
 func exist_disconnected_nodes(node_list, edge_list):
 	for node in node_list:
@@ -45,6 +45,6 @@ func graphedit_to_networkx(nodes: Array, edges: Array) -> String:
 	return graph_json
 
 func networkx_to_graphedit(nx_json) -> String:
-	print(nx_json)
+	# print(nx_json)
 	var myjson = "ntog"
 	return JSON.stringify(myjson)

@@ -2,6 +2,8 @@ extends Control
 
 func _ready() -> void:
 	globals.init()
+	if globals.logged_in == false:
+		print("inte inloggad")
 
 func _on_btn_designer_pressed() -> void:
 	get_tree().change_scene_to_file("res://screens/designer/designer.tscn")
