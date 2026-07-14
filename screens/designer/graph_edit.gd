@@ -7,19 +7,11 @@ func _ready() -> void:
 	connection_request.connect(_on_graph_connection_request)
 	disconnection_request.connect(_on_graph_disconnection_request)
 
-func _make_unique_name(base: String) -> String:
-	var name = base
-	var i = 1
-	while graph.has_node(name):
-		name = "%s_%d" % [base, i]
-		i += 1
-	return name
-
 func get_all_graph_nodes():
 	var graph_nodes = []
 	for child in graph.get_children():
 		if child is GraphNode:
-			graph_nodes.append(child.name)
+			graph_nodes.append([child.title, child.name])
 	return graph_nodes
 
 # Add a node
@@ -37,7 +29,6 @@ func _on_btn_add_pressed() -> void:
 	var gnode := GraphNode.new()
 	gnode.ignore_invalid_connection_type = true	
 	gnode.title = option
-	gnode.name = _make_unique_name(option)
 
 	# Customize the visual appearance of the node
 	gnode.position_offset = Vector2(100, 150)

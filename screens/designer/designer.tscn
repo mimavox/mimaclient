@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://5cpxmlg0recs"]
+[gd_scene format=3 uid="uid://5cpxmlg0recs"]
 
 [ext_resource type="Script" uid="uid://c3326f17bj1bt" path="res://screens/designer/designer.gd" id="1_vhm8n"]
 [ext_resource type="Script" uid="uid://ktkikfua1s72" path="res://screens/designer/graph_edit.gd" id="2_45wie"]
 [ext_resource type="Texture2D" uid="uid://dq8mast03tr2t" path="res://assets/home.png" id="2_am42k"]
 [ext_resource type="Script" uid="uid://b3rkni1tgcxq5" path="res://screens/designer/popup_window.gd" id="3_mbg03"]
 
-[node name="Designer" type="Control"]
+[node name="Designer" type="Control" unique_id=1608645222]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vhm8n")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=33600494]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23921569, 0.4509804, 0.3529412, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=8487647]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,47 +32,47 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="Background/VBoxContainer" unique_id=331111795]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/Navigation"]
+[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/Navigation" unique_id=1103542235]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 disabled = true
 text = "mind designer"
 
-[node name="btnRunner" type="Button" parent="Background/VBoxContainer/Navigation"]
+[node name="btnRunner" type="Button" parent="Background/VBoxContainer/Navigation" unique_id=2128109780]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "mind runner"
 
-[node name="content" type="MarginContainer" parent="Background/VBoxContainer"]
+[node name="content" type="MarginContainer" parent="Background/VBoxContainer" unique_id=273528108]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="columns" type="HBoxContainer" parent="Background/VBoxContainer/content"]
+[node name="columns" type="HBoxContainer" parent="Background/VBoxContainer/content" unique_id=1739816207]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="GraphEdit" type="GraphEdit" parent="Background/VBoxContainer/content/columns"]
+[node name="GraphEdit" type="GraphEdit" parent="Background/VBoxContainer/content/columns" unique_id=933481547]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_45wie")
 
-[node name="PopupWindow" type="Window" parent="Background/VBoxContainer/content/columns/GraphEdit"]
+[node name="PopupWindow" type="Window" parent="Background/VBoxContainer/content/columns/GraphEdit" unique_id=1434282258]
 unique_name_in_owner = true
 oversampling_override = 1.0
 title = "New module"
 initial_position = 1
-size = Vector2i(500, 349)
+size = Vector2i(500, 351)
 visible = false
 wrap_controls = true
 popup_window = true
@@ -83,7 +83,7 @@ theme_override_constants/resize_margin = 18
 theme_override_font_sizes/title_font_size = 20
 script = ExtResource("3_mbg03")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow" unique_id=401444339]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,13 +91,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="optionLabel" type="Label" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+[node name="optionLabel" type="Label" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer" unique_id=177646246]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 24
 text = "Please choose a module type:"
 
-[node name="option" type="OptionButton" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+[node name="option" type="OptionButton" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer" unique_id=877058524]
 layout_mode = 2
 allow_reselect = true
 item_count = 3
@@ -108,12 +108,12 @@ popup/item_1/id = 1
 popup/item_2/text = "Decide action"
 popup/item_2/id = 2
 
-[node name="inputLabel" type="Label" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+[node name="inputLabel" type="Label" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer" unique_id=2023044847]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Please describe the new module:"
 
-[node name="input" type="TextEdit" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+[node name="input" type="TextEdit" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer" unique_id=1662245812]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
@@ -121,49 +121,49 @@ theme_override_font_sizes/font_size = 24
 wrap_mode = 1
 scroll_smooth = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer" unique_id=1015283523]
 layout_mode = 2
 
-[node name="btnCancel" type="Button" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer"]
+[node name="btnCancel" type="Button" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer" unique_id=739644491]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 
-[node name="btnOk" type="Button" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer"]
+[node name="btnOk" type="Button" parent="Background/VBoxContainer/content/columns/GraphEdit/PopupWindow/VBoxContainer/HBoxContainer" unique_id=1849193277]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "OK"
 
-[node name="Buttons" type="VBoxContainer" parent="Background/VBoxContainer/content/columns"]
+[node name="Buttons" type="VBoxContainer" parent="Background/VBoxContainer/content/columns" unique_id=695334611]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 20
 
-[node name="btnClear" type="Button" parent="Background/VBoxContainer/content/columns/Buttons"]
+[node name="btnClear" type="Button" parent="Background/VBoxContainer/content/columns/Buttons" unique_id=1047079734]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Clear"
 
-[node name="btnLoad" type="Button" parent="Background/VBoxContainer/content/columns/Buttons"]
+[node name="btnLoad" type="Button" parent="Background/VBoxContainer/content/columns/Buttons" unique_id=656648466]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Load
 "
 
-[node name="btnSave" type="Button" parent="Background/VBoxContainer/content/columns/Buttons"]
+[node name="btnSave" type="Button" parent="Background/VBoxContainer/content/columns/Buttons" unique_id=1181651384]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Save"
 
-[node name="footer" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="footer" type="HBoxContainer" parent="Background/VBoxContainer" unique_id=1767318778]
 layout_mode = 2
 
-[node name="btnHome" type="Button" parent="Background/VBoxContainer/footer"]
+[node name="btnHome" type="Button" parent="Background/VBoxContainer/footer" unique_id=1998719892]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -172,14 +172,14 @@ theme_override_font_sizes/font_size = 16
 icon = ExtResource("2_am42k")
 flat = true
 
-[node name="Label" type="Label" parent="Background/VBoxContainer/footer"]
+[node name="Label" type="Label" parent="Background/VBoxContainer/footer" unique_id=1275172096]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
 text = "mind designer"
 
-[node name="btnAdd" type="Button" parent="Background"]
+[node name="btnAdd" type="Button" parent="Background" unique_id=1024362341]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 115.0
@@ -188,7 +188,7 @@ offset_bottom = 207.0
 theme_override_font_sizes/font_size = 50
 text = "+"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=319797573]
 
 [connection signal="pressed" from="Background/VBoxContainer/Navigation/btnRunner" to="." method="_on_btn_runner_pressed"]
 [connection signal="connection_request" from="Background/VBoxContainer/content/columns/GraphEdit" to="." method="_on_graph_connection_request"]
