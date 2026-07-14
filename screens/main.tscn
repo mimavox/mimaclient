@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://7c816uobhdtv"]
+[gd_scene format=3 uid="uid://7c816uobhdtv"]
 
 [ext_resource type="Script" uid="uid://cplojukveoo6u" path="res://screens/main.gd" id="1_0vcwn"]
 [ext_resource type="Texture2D" uid="uid://cg2n0s7v3clix" path="res://assets/mima.svg" id="2_0vcwn"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=1208649562]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0vcwn")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1685970970]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14901961, 0.22352941, 0.2509804, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=1796582789]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -31,34 +31,34 @@ offset_right = 205.5
 offset_bottom = 54.0
 grow_horizontal = 2
 
-[node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="navigation" type="HBoxContainer" parent="Background/VBoxContainer" unique_id=1453668544]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation"]
+[node name="btnDesigner" type="Button" parent="Background/VBoxContainer/navigation" unique_id=59728694]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "mind designer"
 
-[node name="btnRunner" type="Button" parent="Background/VBoxContainer/navigation"]
+[node name="btnRunner" type="Button" parent="Background/VBoxContainer/navigation" unique_id=9834751]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "mind runner"
 
-[node name="content" type="CenterContainer" parent="Background/VBoxContainer"]
+[node name="content" type="CenterContainer" parent="Background/VBoxContainer" unique_id=48511013]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Mima" type="Sprite2D" parent="Background/VBoxContainer/content"]
+[node name="Mima" type="Sprite2D" parent="Background/VBoxContainer/content" unique_id=1420351164]
 position = Vector2(-388.5, 344)
 scale = Vector2(3, 3)
 texture = ExtResource("2_0vcwn")
 centered = false
 
-[node name="Window" type="Window" parent="."]
+[node name="Window" type="Window" parent="." unique_id=1612817169]
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(1000, 500)
@@ -67,7 +67,7 @@ borderless = true
 always_on_top = true
 popup_window = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Window" unique_id=1476741035]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -82,18 +82,18 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="Window/VBoxContainer"]
+[node name="Label" type="Label" parent="Window/VBoxContainer" unique_id=9949932]
 layout_mode = 2
 size_flags_vertical = 2
 text = "Please log in"
 horizontal_alignment = 1
 
-[node name="inputUser" type="LineEdit" parent="Window/VBoxContainer"]
+[node name="inputUser" type="LineEdit" parent="Window/VBoxContainer" unique_id=1232708091]
 layout_mode = 2
 placeholder_text = "username"
 caret_blink = true
 
-[node name="inputPass" type="LineEdit" parent="Window/VBoxContainer"]
+[node name="inputPass" type="LineEdit" parent="Window/VBoxContainer" unique_id=326065593]
 layout_mode = 2
 placeholder_text = "password"
 
